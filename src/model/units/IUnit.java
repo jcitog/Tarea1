@@ -65,4 +65,38 @@ public interface IUnit {
    * If the other location is out of this unit's movement range, the unit doesn't move.
    */
   void moveTo(Location targetLocation);
+
+  /**
+   * Receives damage from an axe.
+   *
+   * @param attack
+   *     Received attack.
+   */
+  void receiveAxeAttack(AxeAttack attack);
+
+  /**
+   * Receives damage from a bow.
+   *
+   * @param attack
+   *     Received attack.
+   */
+  void receiveBowAttack(BowAttack attack);
+
+  /**
+   * Receives damage from a spear.
+   *
+   * @param attack
+   *     Received attack.
+   */
+  void receiveSpearAttack(SpearAttack attack);
+
+  /**
+   * Receives damage from a sword.
+   *
+   * @param attack
+   *     Received attack.
+   */
+  void receiveSwordAttack(SwordAttack attack);
+
+
 }
