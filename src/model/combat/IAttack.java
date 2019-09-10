@@ -25,7 +25,7 @@ public interface IAttack {
    *
    * @return power of the attack.
    */
-  int getpower();
+  int getPower();
 
   /**
    * Getter for the attack's name.

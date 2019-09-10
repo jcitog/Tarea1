@@ -88,4 +88,53 @@ public abstract class AbstractUnit implements IUnit {
       setLocation(targetLocation);
     }
   }
+
+  public void attack(IPokemon other) {
+    selectedAttack.attack(other);
+  }
+
+  protected void receiveAttack(IAttack attack)  {
+    this.currentHitPoints -= attack.getPower();
+  }
+
+  @Override
+  public void receiveAxeAttack(AxeAttack attack) {
+    receiveAttack(attack);
+  }
+
+  @Override
+  public void receiveBowAttack(BowAttack attack) {
+    receiveAttack(attack);
+  }
+
+  @Override
+  public void receiveSpearAttack(SpearAttack attack) {
+    receiveAttack(attack);
+  }
+
+  @Override
+  public void receiveSwordAttack(SwordAttack attack) {
+    receiveAttack(attack);
+  }
+
+  /**
+   * Receives an attack to which this weapon is weak.
+   *
+   * @param attack
+   *     Received attack.
+   */
+  protected void receiveWeaknessAttack(IAttack attack) {
+    this.currentHitPoints -= attack.getPower() * 1.5;
+  }
+
+  /**
+   * Receives an attack to which this weapon is resistant.
+   *
+   * @param attack
+   *     Received attack.
+   */
+  protected void receiveResistantAttack(IAttack attack) {
+    this.currentHitPoints -= attack.getPower() - 20;
+  }
+
 }
