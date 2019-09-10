@@ -26,5 +26,5 @@ public class Axe extends AbstractItem {
     super(name, power, minRange, maxRange);
   }
 
-  void equipedtoFigther(Fighter )
+  public void equipedtoFighter(Fighter fighter){this.equipedto(fighter);}
 }
