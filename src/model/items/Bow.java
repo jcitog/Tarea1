@@ -27,5 +27,5 @@ public class Bow extends AbstractItem {
     this.maxRange = Math.max(maxRange, this.minRange);
   }
 
-
+  public void equipedtoArcher(Archer archer){this.equipedto(archer)}
 }
