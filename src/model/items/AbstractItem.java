@@ -65,4 +65,20 @@ public abstract class AbstractItem implements IEquipableItem {
   public int getMaxRange() {
     return maxRange;
   }
+
+  public void equipedtoAlpaca(Alpaca alpaca){}
+
+  public void equipedtoArcher(Archer archer){}
+
+  public void equipedtoCleric(Cleric cleric){}
+
+  public void equipedtoFighter(Fighter fighter){}
+
+  public void equipedtoHero(Hero hero){}
+
+  public void equipedtoSorcerer(Sorcerer sorcerer){}
+
+  public void equipedtoSwordmaster(Swordmaster swordmaster){}
+
+  }
 }

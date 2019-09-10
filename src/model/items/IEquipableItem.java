@@ -45,4 +45,6 @@ public interface IEquipableItem {
    * @return the maximum range of the item
    */
   int getMaxRange();
+
+  equipAlpaca
 }
