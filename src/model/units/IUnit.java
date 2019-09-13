@@ -26,7 +26,20 @@ public interface IUnit {
   /**
    * @return hit points of the unit
    */
-  int getCurrentHitPoints();
+  double getCurrentHitPoints();
+
+  /**
+   * @return max hit points of the unit
+   */
+  double getHitPoints();
+
+  /**
+   * Sets the current hit points of this unit.
+   *
+   * @param hp
+   *     the hit points to set
+   */
+  void setCurrentHitPoints(double hp);
 
   /**
    * @return the items carried by this unit
@@ -66,37 +79,19 @@ public interface IUnit {
    */
   void moveTo(Location targetLocation);
 
-  /**
-   * Receives damage from an axe.
-   *
-   * @param attack
-   *     Received attack.
-   */
-  void receiveAxeAttack(AxeAttack attack);
+  void setOpponent(IUnit other);
 
-  /**
-   * Receives damage from a bow.
-   *
-   * @param attack
-   *     Received attack.
-   */
-  void receiveBowAttack(BowAttack attack);
+  void equipToFighter(Fighter fighter);
 
-  /**
-   * Receives damage from a spear.
-   *
-   * @param attack
-   *     Received attack.
-   */
-  void receiveSpearAttack(SpearAttack attack);
+  void equipToArcher(Archer archer);
 
-  /**
-   * Receives damage from a sword.
-   *
-   * @param attack
-   *     Received attack.
-   */
-  void receiveSwordAttack(SwordAttack attack);
+  void equipToSorcerer(Sorcerer sorcerer);
+
+  void equipToHero(Hero hero);
+
+  void equipToCleric(Cleric cleric);
+
+  void equipToSwordMaster(SwordMaster swordMaster);
 
 
 }

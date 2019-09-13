@@ -35,8 +35,9 @@ public class Hero extends AbstractUnit {
    */
   @Override
   public void equipItem(final IEquipableItem item) {
-    if (item instanceof Spear) {
-      equippedItem = item;
+    if(this.items.contains(item)) {
+      item.equipToHero(this);
     }
   }
+
 }

@@ -29,7 +29,7 @@ public abstract class AbstractAttack implements IAttack {
    * @param maxRange
    *     maximum range of the attack
    */
-  protected AbstractAttack(String name, int power) {
+  protected AbstractAttack(String name, int power, int min) {
     this.power = power;
     this.name = name;
     this.minRange = minRange;
@@ -65,7 +65,7 @@ public abstract class AbstractAttack implements IAttack {
    */
   @Override
   public boolean equals(Object obj) {
-    return obj instanceof IAttack && ((IAttack) obj).getBaseDamage() == power
+    return obj instanceof IAttack && ((IAttack) obj).getPower() == power
             && ((IAttack) obj).getName().equals(name);
   }
 }

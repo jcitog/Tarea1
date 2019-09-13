@@ -40,8 +40,5 @@ public class AxeAttack extends AbstractAttack {
     other.receiveAxeAttack(this);
   }
 
-  @Override
-  public boolean equals(Object obj) {
-    return obj instanceof AxeAttack && super.equals(obj);
-  }
+
 }

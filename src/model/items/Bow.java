@@ -1,5 +1,7 @@
 package model.items;
 
+import model.units.Archer;
+
 /**
  * @author Ignacio Slater Muñoz
  * @since
@@ -27,5 +29,15 @@ public class Bow extends AbstractItem {
     this.maxRange = Math.max(maxRange, this.minRange);
   }
 
-  public void equipedtoArcher(Archer archer){this.equipedto(archer)}
+  public void equipToArcher(Archer archer){this.equipTo(archer);}
+
+  @Override
+  public void attack(IEquipableItem other) {
+    other.receiveBowAttack(this);
+  }
+
+  @Override
+  public void counterAttack(IEquipableItem other) {
+    other.receiveBowCounterAttack(this);
+  }
 }

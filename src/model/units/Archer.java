@@ -33,16 +33,16 @@ public class Archer extends AbstractUnit {
 
   /**
    * Sets the currently equipped item of this unit.
-   * <p>
-   * The <i>Archer</i> can <b>only equip Bows</b>.
    *
    * @param item
    *     the item to equip
    */
   @Override
   public void equipItem(final IEquipableItem item) {
-    if (item instanceof Bow) {
-      equippedItem = item;
+    if(this.items.contains(item)) {
+      item.equipToArcher(this);
     }
   }
-}
+
+  }
+

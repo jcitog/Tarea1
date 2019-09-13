@@ -1,6 +1,6 @@
 package model.items;
 
-import model.units.IUnit;
+import model.units.*;
 
 /**
  * Abstract class that defines some common information and behaviour between all items.
@@ -52,7 +52,7 @@ public abstract class AbstractItem implements IEquipableItem {
   }
 
   @Override
-  public int getPower() {
+  public float getPower() {
     return power;
   }
 
@@ -66,26 +66,228 @@ public abstract class AbstractItem implements IEquipableItem {
     return maxRange;
   }
 
+  //region Section equip item to unit
   @Override
-  public void equipedtoAlpaca(Alpaca alpaca){}
+  public void equipToArcher(Archer archer){}
 
   @Override
-  public void equipedtoArcher(Archer archer){}
+  public void equipToCleric(Cleric cleric){}
 
   @Override
-  public void equipedtoCleric(Cleric cleric){}
+  public void equipToFighter(Fighter fighter){}
 
   @Override
-  public void equipedtoFighter(Fighter fighter){}
+  public void equipToHero(Hero hero){}
 
   @Override
-  public void equipedtoHero(Hero hero){}
+  public void equipToSorcerer(Sorcerer sorcerer){}
 
   @Override
-  public void equipedtoSorcerer(Sorcerer sorcerer){}
+  public void equipToSwordMaster(SwordMaster swordmaster){}
+  //endregion
 
-  @Override
-  public void equipedtoSwordmaster(Swordmaster swordmaster){}
-
+  //region Section receive attacks by debility and staff heal
+  /**
+   * Receives an attack to which this weapon is neutral.
+   *
+   * @param item
+   *     the owner of the item receives a neutral attack.
+   */
+  protected void receiveNeutralAttack(IEquipableItem item)  {
+    double power = item.getPower();
+    double HPBeforeA = this.getOwner().getCurrentHitPoints();
+    double HPAfterA = HPBeforeA - power;
+    if(HPAfterA <= 0){
+      HPAfterA= 0;
+      this.getOwner().setCurrentHitPoints(HPAfterA);
+      this.counterAttack(item);
+    }
+    else{
+      this.getOwner().setCurrentHitPoints(HPAfterA);
+      this.counterAttack(item);
+    }
   }
+
+  /**
+   * Receives an attack to which this item is weak.
+   *
+   * @param item
+   *     the owner of the item receives a strong attack.
+   */
+  protected void receiveStrongAttack(IEquipableItem item) {
+    double power = item.getPower();
+    double HPBeforeA = this.getOwner().getCurrentHitPoints();
+    double HPAfterA = HPBeforeA - (power * 1.5);
+    if(HPAfterA <= 0){
+      HPAfterA= 0;
+      this.getOwner().setCurrentHitPoints(HPAfterA);
+      this.counterAttack(item);
+    }
+    else{
+      this.getOwner().setCurrentHitPoints(HPAfterA);
+      this.counterAttack(item);
+    }
+  }
+
+  /**
+   * Receives an attack to which this item is resistant.
+   *
+   * @param item
+   *     the owner of the item receives a weak attack.
+   */
+  protected void receiveWeakAttack(IEquipableItem item) {
+    double power = item.getPower();
+    double HPBeforeA = this.getOwner().getCurrentHitPoints();
+    double HPAfterA = HPBeforeA - (power - 20);
+    if(HPAfterA <= 0){
+      HPAfterA= 0;
+      this.getOwner().setCurrentHitPoints(HPAfterA);
+      this.counterAttack(item);
+    }
+    else{
+      this.getOwner().setCurrentHitPoints(HPAfterA);
+      this.counterAttack(item);
+    }
+  }
+
+  /**
+   * Receives a heal from a staff.
+   *
+   * @param item
+   *     the owner of the item receives a heal.
+   */
+  public void receiveClericAttack(IEquipableItem item){
+    double power = item.getPower();
+    double HPBeforeA = this.getOwner().getCurrentHitPoints();
+    double HPAfterA = HPBeforeA + power;
+    if(HPAfterA <= this.getOwner().getHitPoints()){
+      this.getOwner().setCurrentHitPoints(this.getOwner().getHitPoints());
+    }
+    else{
+      this.getOwner().setCurrentHitPoints(HPAfterA);
+    }
+  }
+  //endregion
+
+  //region Section receive attacks by item
+  @Override
+  public void receiveAxeAttack(IEquipableItem other) {
+    receiveNeutralAttack(other);
+  }
+
+  @Override
+  public void receiveBowAttack(IEquipableItem other) {
+    receiveNeutralAttack(other);
+  }
+
+  @Override
+  public void receiveSpearAttack(IEquipableItem other) {
+    receiveNeutralAttack(other);
+  }
+
+  @Override
+  public void receiveSwordAttack(IEquipableItem other) {
+    receiveNeutralAttack(other);
+  }
+
+  @Override
+  public void receiveMBAAttack(IEquipableItem other) {
+    receiveNeutralAttack(other);
+  }
+
+  @Override
+  public void receiveMBLAttack(IEquipableItem other) {
+    receiveNeutralAttack(other);
+  }
+
+  @Override
+  public void receiveMBOAttack(IEquipableItem other) {
+    receiveNeutralAttack(other);
+  }
+
+  //endregion
+
+  //region Section counterattack by debility
+  protected void receiveNeutralCounterAttack(IEquipableItem item){
+    double power = item.getPower();
+    double HPBeforeA = this.getOwner().getCurrentHitPoints();
+    double HPAfterA = HPBeforeA - power;
+    if(HPAfterA <= 0){
+      HPAfterA= 0;
+      this.getOwner().setCurrentHitPoints(HPAfterA);
+    }
+    else{
+      this.getOwner().setCurrentHitPoints(HPAfterA);
+    }
+  }
+
+  protected void receiveStrongCounterAttack(IEquipableItem item){
+    double power = item.getPower();
+    double HPBeforeA = this.getOwner().getCurrentHitPoints();
+    double HPAfterA = HPBeforeA - (power * 1.5);
+    if(HPAfterA <= 0){
+      HPAfterA= 0;
+      this.getOwner().setCurrentHitPoints(HPAfterA);
+    }
+    else{
+      this.getOwner().setCurrentHitPoints(HPAfterA);
+    }
+  }
+
+  protected void receiveWeakCounterAttack(IEquipableItem item){
+    double power = item.getPower();
+    double HPBeforeA = this.getOwner().getCurrentHitPoints();
+    double HPAfterA = HPBeforeA - (power - 20);
+    if(HPAfterA <= 0){
+      HPAfterA= 0;
+      this.getOwner().setCurrentHitPoints(HPAfterA);
+    }
+    else{
+      this.getOwner().setCurrentHitPoints(HPAfterA);
+    }
+  }
+  //endregion
+
+  //region Section receive counterattacks by item
+
+  @Override
+  public void receiveBowCounterAttack(IEquipableItem other) {
+    receiveNeutralCounterAttack(other);
+  }
+
+  @Override
+  public void receiveSpearCounterAttack(IEquipableItem other) {
+    receiveNeutralCounterAttack(other);
+  }
+
+  @Override
+  public void receiveAxeCounterAttack(IEquipableItem other) {
+    receiveNeutralCounterAttack(other);
+  }
+
+  @Override
+  public void receiveSwordCounterAttack(IEquipableItem other) {
+    receiveNeutralCounterAttack(other);
+  }
+
+  @Override
+  public void receiveMBACounterAttack(IEquipableItem other) {
+    receiveNeutralCounterAttack(other);
+  }
+
+  @Override
+  public void receiveMBLCounterAttack(IEquipableItem other) {
+    receiveNeutralCounterAttack(other);
+  }
+
+  @Override
+  public void receiveMBOCounterAttack(IEquipableItem other) {
+    receiveNeutralCounterAttack(other);
+  }
+
+  @Override
+  public void receiveStaffCounterAttack(IEquipableItem item){};
+
+  //endregion
+
 }

@@ -1,5 +1,7 @@
 package model.items;
 
+import model.units.Sorcerer;
+
 /**
  * This class represents a MagicBookAnima type item.
  * <p>
@@ -26,6 +28,80 @@ public class MagicBookAnima extends AbstractItem {
     super(name, power, minRange, maxRange);
   }
 
-  public void equipedtoSorcerer(Sorcerer sorcerer){this.equipedto(sorcerer)}
+  public void equipToSorcerer(Sorcerer sorcerer){this.equipTo(sorcerer);}
+
+  /**
+   * Performs a anima magic book attack.
+   * {@inheritDoc}
+   *
+   * @param other
+   *     Unit that receives the attack.
+   */
+  @Override
+  public void attack(IEquipableItem other) {
+    other.receiveMBAAttack(this);
+  }
+
+  @Override
+  public void counterAttack(IEquipableItem other) {
+    other.receiveMBACounterAttack(this);
+  }
+
+
+  //region Section receive TYPE attack
+
+  @Override
+  public void receiveSpearAttack(IEquipableItem other) {
+    receiveStrongAttack(other);
+  }
+
+  @Override
+  public void receiveSwordAttack(IEquipableItem other) {
+    receiveStrongAttack(other);
+  }
+
+  @Override
+  public void receiveAxeAttack(IEquipableItem other) {
+    receiveStrongAttack(other);
+  }
+
+  @Override
+  public void receiveMBOAttack(IEquipableItem other) {
+    receiveStrongAttack(other);
+  }
+
+  @Override
+  public void receiveMBLAttack(IEquipableItem other) {
+    receiveWeakAttack(other);
+  }
+  //endregion
+
+  //region Section receive TYPE counterattack
+
+  @Override
+  public void receiveSpearCounterAttack(IEquipableItem other) {
+    receiveStrongCounterAttack(other);
+  }
+
+  @Override
+  public void receiveSwordCounterAttack(IEquipableItem other) {
+    receiveStrongCounterAttack(other);
+  }
+
+  @Override
+  public void receiveAxeCounterAttack(IEquipableItem other) {
+    receiveStrongCounterAttack(other);
+  }
+
+  @Override
+  public void receiveMBOCounterAttack(IEquipableItem other) {
+    receiveStrongCounterAttack(other);
+  }
+
+  @Override
+  public void receiveMBLCounterAttack(IEquipableItem other) {
+    receiveWeakCounterAttack(other);
+  }
+  //endregion
 
 }

@@ -21,7 +21,8 @@ import model.map.Location;
 public abstract class AbstractUnit implements IUnit {
 
   protected final List<IEquipableItem> items = new ArrayList<>();
-  private final int currentHitPoints;
+  private double currentHitPoints;
+  private double hitPoints;
   private final int movement;
   protected IEquipableItem equippedItem;
   private Location location;
@@ -38,18 +39,25 @@ public abstract class AbstractUnit implements IUnit {
    * @param maxItems
    *     maximum amount of items this unit can carry
    */
-  protected AbstractUnit(final int hitPoints, final int movement,
-      final Location location, final int maxItems, final IEquipableItem... items) {
-    this.currentHitPoints = hitPoints;
-    this.movement = movement;
-    this.location = location;
-    this.items.addAll(Arrays.asList(items).subList(0, min(maxItems, items.length)));
+  protected AbstractUnit(final float hitPoints, final int movement,
+                         final Location location, final int maxItems, final IEquipableItem... items) {
+      this.currentHitPoints = hitPoints;
+      this.hitPoints = hitPoints;
+      this.movement = movement;
+      this.location = location;
+      this.items.addAll(Arrays.asList(items).subList(0, min(maxItems, items.length)));
   }
 
   @Override
-  public int getCurrentHitPoints() {
+  public double getCurrentHitPoints() {
     return currentHitPoints;
   }
+
+  @Override
+  public double getHitPoints(){return hitPoints;};
+
+  @Override
+  public void setCurrentHitPoints(double hp) { this.currentHitPoints = hp; }
 
   @Override
   public List<IEquipableItem> getItems() {
@@ -89,52 +97,35 @@ public abstract class AbstractUnit implements IUnit {
     }
   }
 
-  public void attack(IPokemon other) {
-    selectedAttack.attack(other);
-  }
-
-  protected void receiveAttack(IAttack attack)  {
-    this.currentHitPoints -= attack.getPower();
-  }
-
-  @Override
-  public void receiveAxeAttack(AxeAttack attack) {
-    receiveAttack(attack);
-  }
-
-  @Override
-  public void receiveBowAttack(BowAttack attack) {
-    receiveAttack(attack);
+  public void setOpponent(IUnit other) {
+    if(this.getLocation().distanceTo(other.getLocation()) >= this.getEquippedItem().getMinRange() &&
+            this.getLocation().distanceTo(other.getLocation()) <= this.getEquippedItem().getMaxRange()) {
+      this.getEquippedItem().attack(other.getEquippedItem());
+      if(other.getCurrentHitPoints() >= 0 && other.getEquippedItem()!=null &&
+              other.getLocation().distanceTo(this.getLocation()) >= other.getEquippedItem().getMinRange() &&
+                other.getLocation().distanceTo(this.getLocation()) <= other.getEquippedItem().getMaxRange()){
+        other.getEquippedItem().attack(this.getEquippedItem());
+      }
+    }
   }
 
   @Override
-  public void receiveSpearAttack(SpearAttack attack) {
-    receiveAttack(attack);
-  }
+  public void equipToFighter(Fighter fighter){};
 
   @Override
-  public void receiveSwordAttack(SwordAttack attack) {
-    receiveAttack(attack);
-  }
+  public void equipToArcher(Archer archer){};
 
-  /**
-   * Receives an attack to which this weapon is weak.
-   *
-   * @param attack
-   *     Received attack.
-   */
-  protected void receiveWeaknessAttack(IAttack attack) {
-    this.currentHitPoints -= attack.getPower() * 1.5;
-  }
+  @Override
+  public void equipToSorcerer(Sorcerer sorcerer){};
 
-  /**
-   * Receives an attack to which this weapon is resistant.
-   *
-   * @param attack
-   *     Received attack.
-   */
-  protected void receiveResistantAttack(IAttack attack) {
-    this.currentHitPoints -= attack.getPower() - 20;
-  }
+  @Override
+  public void equipToHero(Hero hero){};
+
+  @Override
+  public void equipToCleric(Cleric cleric){};
+
+  @Override
+  public void equipToSwordMaster(SwordMaster swordMaster){};
+
 
 }

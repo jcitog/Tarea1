@@ -1,5 +1,7 @@
 package model.items;
 
+import model.units.SwordMaster;
+
 /**
  * This class represents a sword type item.
  * <p>
@@ -26,6 +28,15 @@ public class Sword extends AbstractItem {
     super(name, power, minRange, maxRange);
   }
 
-  public void equipedtoSwordmaster(Swordmaster swordmaster){this.equipedto(swordmaster)}
+  public void equipToSwordMaster(SwordMaster swordmaster){this.equipTo(swordmaster);}
+
+  @Override
+  public void attack(IEquipableItem other){other.receiveSwordAttack(this);}
+
+  @Override
+  public void counterAttack(IEquipableItem item){item.receiveSwordCounterAttack(this);};
+
+
+
 
 }

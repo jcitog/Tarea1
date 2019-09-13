@@ -1,5 +1,7 @@
 package model.items;
 
+import model.units.Cleric;
+
 /**
  * This class represents a <i>Staff</i> type item.
  * <p>
@@ -26,6 +28,15 @@ public class Staff extends AbstractItem {
     super(name, power, minRange, maxRange);
   }
 
-  public void equipedtoCleric(Cleric cleric){this.equipedto(cleric)}
+  public void equipToCleric(Cleric cleric){this.equipTo(cleric);}
 
+  @Override
+  public void attack(IEquipableItem other) {
+    other.receiveClericAttack(this);
+  }
+
+  @Override
+  public void counterAttack(IEquipableItem other) {
+    other.receiveStaffCounterAttack(this);
+  }
 }
