@@ -1,8 +1,11 @@
 package model.items;
 
+import static org.junit.jupiter.api.Assertions.assertTrue;
+
 import model.map.Location;
 import model.units.IUnit;
 import model.units.Sorcerer;
+import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertNull;

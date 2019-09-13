@@ -47,6 +47,19 @@ public interface IUnit {
   List<IEquipableItem> getItems();
 
   /**
+   * Sets the item of this unit.
+   *
+   * @param item
+   *     the item to set
+   */
+  void setItems(IEquipableItem item);
+
+  /**
+   * @return amount of items  that this unit can carry
+   */
+  int getMaxItems();
+
+  /**
    * @return the currently equipped item
    */
   IEquipableItem getEquippedItem();
@@ -122,5 +135,4 @@ public interface IUnit {
    *     swordMaster to be equipped
    */
   void equipToSwordMaster(SwordMaster swordMaster);
-
 }

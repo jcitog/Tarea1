@@ -18,6 +18,7 @@ public class BowTest extends AbstractTestItem {
   private Bow bow;
   private Bow wrongBow;
   private Archer archer;
+  private Spear spear;
 
   /**
    * Sets which item is going to be tested
@@ -29,6 +30,7 @@ public class BowTest extends AbstractTestItem {
     expectedMinRange = 2;
     expectedMaxRange = 4;
     bow = new Bow(expectedName, expectedPower, expectedMinRange, expectedMaxRange);
+    spear = new Spear("lanzilla", 30, 1, 2);
   }
 
   /**
@@ -76,5 +78,11 @@ public class BowTest extends AbstractTestItem {
   @Override
   public IUnit getTestUnit() {
     return archer;
+  }
+
+  @Test
+  public void attackBowTest(){
+    bow.attack(spear);
+
   }
 }

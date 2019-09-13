@@ -14,9 +14,7 @@ import model.map.Location;
 public class Sorcerer extends AbstractUnit {
 
   public Sorcerer(final int hitPoints, final int movement, final Location location,
-      IEquipableItem... items) {
-    super(hitPoints, movement, location, 3, items);
-  }
+      IEquipableItem... items) { super(hitPoints, movement, location, 3, items); }
 
   /**
    * Sets the currently equipped item of this unit.
@@ -26,8 +24,5 @@ public class Sorcerer extends AbstractUnit {
    */
   @Override
   public void equipItem(final IEquipableItem item) {
-    if(this.items.contains(item)) {
-      item.equipToSorcerer(this);
-    }
-  }
+    if(this.items.contains(item)) { item.equipToSorcerer(this); } }
 }

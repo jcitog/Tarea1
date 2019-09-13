@@ -15,6 +15,7 @@ public class StaffTest extends AbstractTestItem {
   private Staff staff;
   private Staff wrongStaff;
   private Cleric cleric;
+  private Axe axe;
 
   /**
    * Sets which item is going to be tested

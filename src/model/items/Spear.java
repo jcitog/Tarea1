@@ -44,9 +44,7 @@ public class Spear extends AbstractItem {
   }
 
   @Override
-  public void receiveAxeAttack(IEquipableItem other) {
-    receiveStrongAttack(other);
-  }
+  public void receiveAxeAttack(IEquipableItem other) { receiveStrongAttack(other); }
 
   @Override
   public void receiveMBOAttack(IEquipableItem other) {

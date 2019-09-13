@@ -47,6 +47,9 @@ public abstract class AbstractItem implements IEquipableItem {
   }
 
   @Override
+  public void setOwner(IUnit unit){this.owner= unit;}
+
+  @Override
   public String getName() {
     return name;
   }
@@ -94,11 +97,9 @@ public abstract class AbstractItem implements IEquipableItem {
    *     the owner of the item receives a neutral attack.
    */
   protected void receiveNeutralAttack(IEquipableItem item)  {
-    double power = item.getPower();
-    double HPBeforeA = this.getOwner().getCurrentHitPoints();
-    double HPAfterA = HPBeforeA - power;
+    double HPAfterA = this.getOwner().getCurrentHitPoints() - item.getPower();
     if(HPAfterA <= 0){
-      HPAfterA= 0;
+      HPAfterA = 0;
       this.getOwner().setCurrentHitPoints(HPAfterA);
     }
     else{

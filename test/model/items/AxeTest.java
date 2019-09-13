@@ -2,7 +2,11 @@ package model.items;
 
 import model.map.Location;
 import model.units.Fighter;
+import model.units.Hero;
 import model.units.IUnit;
+import org.junit.jupiter.api.Test;
+
+import static org.junit.jupiter.api.Assertions.assertEquals;
 
 /**
  * Test set for Axes
@@ -15,6 +19,8 @@ class AxeTest extends AbstractTestItem {
   private Axe axe;
   private Axe wrongAxe;
   private Fighter fighter;
+  private Hero hero;
+  private Spear spear;
 
   @Override
   public void setTestItem() {
@@ -23,6 +29,7 @@ class AxeTest extends AbstractTestItem {
     expectedMinRange = 1;
     expectedMaxRange = 2;
     axe = new Axe(expectedName, expectedPower, expectedMinRange, expectedMaxRange);
+    spear = new Spear("lanzilla",30,1,2);
   }
 
   /**
@@ -58,4 +65,20 @@ class AxeTest extends AbstractTestItem {
   public IUnit getTestUnit() {
     return fighter;
   }
+
+  @Test
+  public void axeSpearTest(){
+    hero = new Hero(120,4,new Location(1,0));
+    fighter.getLocation().addNeighbour(hero.getLocation());
+    hero.equipItem(spear);
+    //spear.receiveAxeAttack(axe);
+    axe.attack(spear);
+    //fighter.setOpponent(hero);
+    assertEquals(hero.getCurrentHitPoints(),105);
+    fighter.swap(axe,hero);
+    assertEquals(hero.getCurrentHitPoints(),105);
+  }
+
+
+
 }
