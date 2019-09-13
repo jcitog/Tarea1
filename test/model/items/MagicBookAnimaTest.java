@@ -2,30 +2,31 @@ package model.items;
 
 import model.map.Location;
 import model.units.IUnit;
-import model.units.SwordMaster;
+import model.units.Sorcerer;
 
 /**
- * Test set for swords
+ * Test set for anima magic books
  *
  * @author Ignacio Slater Muñoz
  * @since 1.0
  */
-public class SwordTest extends AbstractTestItem {
+public class MagicBookAnimaTest extends AbstractTestItem {
 
-  private Sword sword;
-  private Sword wrongSword;
-  private SwordMaster swordMaster;
+  private MagicBookAnima magicBookAnima;
+  private MagicBookAnima wrongmagicBookAnima;
+  private Sorcerer sorcerer;
+
 
   /**
    * Sets which item is going to be tested
    */
   @Override
   public void setTestItem() {
-    expectedName = "Common sword";
+    expectedName = "Common anima magic book";
     expectedPower = 10;
     expectedMinRange = 1;
     expectedMaxRange = 1;
-    sword = new Sword(expectedName, expectedPower, expectedMinRange, expectedMaxRange);
+    magicBookAnima = new MagicBookAnima(expectedName, expectedPower, expectedMinRange, expectedMaxRange);
   }
 
   /**
@@ -33,7 +34,7 @@ public class SwordTest extends AbstractTestItem {
    */
   @Override
   public void setWrongRangeItem() {
-    wrongSword = new Sword("Wrong sword", 0, -1, -2);
+    wrongmagicBookAnima = new MagicBookAnima("Wrong sword", 0, -1, -2);
   }
 
   /**
@@ -41,12 +42,12 @@ public class SwordTest extends AbstractTestItem {
    */
   @Override
   public void setTestUnit() {
-    swordMaster = new SwordMaster(10, 5, new Location(0, 0));
+    sorcerer = new Sorcerer(10, 5, new Location(0, 0));
   }
 
   @Override
   public IEquipableItem getWrongTestItem() {
-    return wrongSword;
+    return wrongmagicBookAnima;
   }
 
   /**
@@ -54,7 +55,7 @@ public class SwordTest extends AbstractTestItem {
    */
   @Override
   public IEquipableItem getTestItem() {
-    return sword;
+    return magicBookAnima;
   }
 
   /**
@@ -62,6 +63,6 @@ public class SwordTest extends AbstractTestItem {
    */
   @Override
   public IUnit getTestUnit() {
-    return swordMaster;
+    return sorcerer;
   }
 }

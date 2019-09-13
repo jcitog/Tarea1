@@ -33,10 +33,33 @@ public class Sword extends AbstractItem {
   @Override
   public void attack(IEquipableItem other){other.receiveSwordAttack(this);}
 
+  //region Section receive TYPE attack
+
   @Override
-  public void counterAttack(IEquipableItem item){item.receiveSwordCounterAttack(this);};
+  public void receiveSpearAttack(IEquipableItem other) {
+    receiveStrongAttack(other);
+  }
 
+  @Override
+  public void receiveAxeAttack(IEquipableItem other) {
+    receiveWeakAttack(other);
+  }
 
+  @Override
+  public void receiveMBOAttack(IEquipableItem other) {
+    receiveStrongAttack(other);
+  }
 
+  @Override
+  public void receiveMBLAttack(IEquipableItem other) {
+    receiveStrongAttack(other);
+  }
+
+  @Override
+  public void receiveMBAAttack(IEquipableItem other) {
+    receiveStrongAttack(other);
+  }
+
+  //endregion
 
 }

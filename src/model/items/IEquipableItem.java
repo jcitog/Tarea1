@@ -53,15 +53,6 @@ public interface IEquipableItem {
    */
   void attack(IEquipableItem item);
 
-  /**
-   * Counterattack the owner of this item.
-   *
-   * @param item
-   *      the item that will be counterattacked
-   */
-  void counterAttack(IEquipableItem item);
-
-
   //region Section receive attack
   /**
    * Attack the owner of this item with the spear.
@@ -118,88 +109,6 @@ public interface IEquipableItem {
    *     the item that will be attacked with the anima magic book
    */
   void receiveMBAAttack(IEquipableItem item);
-
-  /**
-   * Heal the the owner of this item with the staff.
-   *
-   * @param item
-   *     the item item that will be healed with the staff
-   */
-  void receiveClericAbility(IEquipableItem item);
-
-  /**
-   * Counterattack the owner of this item.
-   *
-   * @param item
-   *     the item that will be counterattacked
-   */
-
-  //endregion
-
-  //region Section counterattacks
-  /**
-   * Counterattack the owner of this item with the axe.
-   *
-   * @param item
-   *     the item that will be counterattacked
-   */
-  void receiveAxeCounterAttack(IEquipableItem item);
-
-  /**
-   * Counterattack the owner of this item with the bow.
-   *
-   * @param item
-   *     the item that will be counterattacked
-   */
-  void receiveBowCounterAttack(IEquipableItem item);
-
-  /**
-   * Counterattack the owner of this item with the spear.
-   *
-   * @param item
-   *     the item that will be counterattacked
-   */
-  void receiveSpearCounterAttack(IEquipableItem item);
-
-  /**
-   * Counterattack the owner of this item with the sword.
-   *
-   * @param item
-   *     the item that will be counterattacked
-   */
-  void receiveSwordCounterAttack(IEquipableItem item);
-
-  /**
-   * Counterattack the owner of this item with the anima magic book.
-   *
-   * @param item
-   *     the item that will be counterattacked
-   */
-  void receiveMBACounterAttack(IEquipableItem item);
-
-  /**
-   * Counterattack the owner of this item with the luz magic book.
-   *
-   * @param item
-   *     the item that will be counterattacked
-   */
-  void receiveMBLCounterAttack(IEquipableItem item);
-
-  /**
-   * Counterattack the owner of this item with the oscuridad magic book.
-   *
-   * @param item
-   *     the item that will be counterattacked
-   */
-  void receiveMBOCounterAttack(IEquipableItem item);
-
-  /**
-   * Cleric respond to the attack doing nothing
-   *
-   * @param item
-   *     the item that will be respond
-   */
-  void receiveStaffCounterAttack(IEquipableItem item);
   //endregion
 
   //region Section equip items

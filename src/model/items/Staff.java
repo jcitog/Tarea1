@@ -30,13 +30,26 @@ public class Staff extends AbstractItem {
 
   public void equipToCleric(Cleric cleric){this.equipTo(cleric);}
 
-  @Override
-  public void attack(IEquipableItem other) {
-    other.receiveClericAbility(this);
+  /**
+   * Heal the owner of this item.
+   *
+   * @param item
+   *      the item that will be healed
+   */
+  public void heal(IEquipableItem item) {
+    double power = this.getPower();
+    double HPBeforeH = item.getOwner().getCurrentHitPoints();
+    double HPAfterH = HPBeforeH + power;
+    if(HPAfterH >= item.getOwner().getHitPoints()){
+      item.getOwner().setCurrentHitPoints(item.getOwner().getHitPoints());
+    }
+    else{
+      item.getOwner().setCurrentHitPoints(HPAfterH);
+    }
   }
 
   @Override
-  public void counterAttack(IEquipableItem other) {
-    other.receiveStaffCounterAttack(this);
-  }
+  public void attack(IEquipableItem item){}
+
+
 }

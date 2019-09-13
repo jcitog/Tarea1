@@ -79,19 +79,48 @@ public interface IUnit {
    */
   void moveTo(Location targetLocation);
 
+  /**
+   * Set the opponent of a unit
+   *
+   * @param other
+   *     other unit that will combat
+   */
   void setOpponent(IUnit other);
 
+  /**
+   * @param fighter
+   *     fighter to be equipped
+   */
   void equipToFighter(Fighter fighter);
 
+  /**
+   * @param archer
+   *     archer to be equipped
+   */
   void equipToArcher(Archer archer);
 
+  /**
+   * @param sorcerer
+   *     sorcerer to be equipped
+   */
   void equipToSorcerer(Sorcerer sorcerer);
 
+  /**
+   * @param hero
+   *     hero to be equipped
+   */
   void equipToHero(Hero hero);
 
+  /**
+   * @param cleric
+   *     cleric to be equipped
+   */
   void equipToCleric(Cleric cleric);
 
+  /**
+   * @param swordMaster
+   *     swordMaster to be equipped
+   */
   void equipToSwordMaster(SwordMaster swordMaster);
-
 
 }

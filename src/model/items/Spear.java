@@ -36,11 +36,6 @@ public class Spear extends AbstractItem {
     other.receiveSpearAttack(this);
   }
 
-  @Override
-  public void counterAttack(IEquipableItem other) {
-    other.receiveSpearCounterAttack(this);
-  }
-
   //region Section receive TYPE attack
 
   @Override
@@ -69,35 +64,4 @@ public class Spear extends AbstractItem {
   }
 
   //endregion
-
-  //region Section receive TYPE counterattack
-
-  @Override
-  public void receiveSwordCounterAttack(IEquipableItem other) {
-    receiveWeakCounterAttack(other);
-  }
-
-  @Override
-  public void receiveAxeCounterAttack(IEquipableItem other) {
-    receiveStrongCounterAttack(other);
-  }
-
-  @Override
-  public void receiveMBOCounterAttack(IEquipableItem other) {
-    receiveStrongCounterAttack(other);
-  }
-
-  @Override
-  public void receiveMBLCounterAttack(IEquipableItem other) {
-    receiveStrongCounterAttack(other);
-  }
-
-  @Override
-  public void receiveMBACounterAttack(IEquipableItem other) {
-    receiveStrongCounterAttack(other);
-  }
-
-  //endregion
-
-
 }

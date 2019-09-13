@@ -35,11 +35,6 @@ public class Axe extends AbstractItem {
     other.receiveAxeAttack(this);
   }
 
-  @Override
-  public void counterAttack(IEquipableItem other) {
-    other.receiveAxeCounterAttack(this);
-  }
-
   //region Section receive TYPE attack
 
   @Override
@@ -65,35 +60,6 @@ public class Axe extends AbstractItem {
   @Override
   public void receiveMBAAttack(IEquipableItem other) {
     receiveStrongAttack(other);
-  }
-
-  //endregion
-
-  //region Section receive TYPE counterattack
-
-  @Override
-  public void receiveSpearCounterAttack(IEquipableItem other) {
-    receiveWeakCounterAttack(other);
-  }
-
-  @Override
-  public void receiveSwordCounterAttack(IEquipableItem other) {
-    receiveStrongCounterAttack(other);
-  }
-
-  @Override
-  public void receiveMBOCounterAttack(IEquipableItem other) {
-    receiveStrongCounterAttack(other);
-  }
-
-  @Override
-  public void receiveMBLCounterAttack(IEquipableItem other) {
-    receiveStrongCounterAttack(other);
-  }
-
-  @Override
-  public void receiveMBACounterAttack(IEquipableItem other) {
-    receiveStrongCounterAttack(other);
   }
 
   //endregion

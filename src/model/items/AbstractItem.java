@@ -100,11 +100,9 @@ public abstract class AbstractItem implements IEquipableItem {
     if(HPAfterA <= 0){
       HPAfterA= 0;
       this.getOwner().setCurrentHitPoints(HPAfterA);
-      this.counterAttack(item);
     }
     else{
       this.getOwner().setCurrentHitPoints(HPAfterA);
-      this.counterAttack(item);
     }
   }
 
@@ -121,11 +119,9 @@ public abstract class AbstractItem implements IEquipableItem {
     if(HPAfterA <= 0){
       HPAfterA= 0;
       this.getOwner().setCurrentHitPoints(HPAfterA);
-      this.counterAttack(item);
     }
     else{
       this.getOwner().setCurrentHitPoints(HPAfterA);
-      this.counterAttack(item);
     }
   }
 
@@ -142,25 +138,12 @@ public abstract class AbstractItem implements IEquipableItem {
     if(HPAfterA <= 0){
       HPAfterA= 0;
       this.getOwner().setCurrentHitPoints(HPAfterA);
-      this.counterAttack(item);
     }
     else{
       this.getOwner().setCurrentHitPoints(HPAfterA);
-      this.counterAttack(item);
     }
   }
 
-  public void receiveClericAbility(IEquipableItem item){
-    double power = item.getPower();
-    double HPBeforeA = this.getOwner().getCurrentHitPoints();
-    double HPAfterA = HPBeforeA + power;
-    if(HPAfterA <= this.getOwner().getHitPoints()){
-      this.getOwner().setCurrentHitPoints(this.getOwner().getHitPoints());
-    }
-    else{
-      this.getOwner().setCurrentHitPoints(HPAfterA);
-    }
-  }
   //endregion
 
   //region Section receive attacks by item
@@ -200,88 +183,4 @@ public abstract class AbstractItem implements IEquipableItem {
   }
 
   //endregion
-
-  //region Section counterattack by debility
-  protected void receiveNeutralCounterAttack(IEquipableItem item){
-    double power = item.getPower();
-    double HPBeforeA = this.getOwner().getCurrentHitPoints();
-    double HPAfterA = HPBeforeA - power;
-    if(HPAfterA <= 0){
-      HPAfterA= 0;
-      this.getOwner().setCurrentHitPoints(HPAfterA);
-    }
-    else{
-      this.getOwner().setCurrentHitPoints(HPAfterA);
-    }
-  }
-
-  protected void receiveStrongCounterAttack(IEquipableItem item){
-    double power = item.getPower();
-    double HPBeforeA = this.getOwner().getCurrentHitPoints();
-    double HPAfterA = HPBeforeA - (power * 1.5);
-    if(HPAfterA <= 0){
-      HPAfterA= 0;
-      this.getOwner().setCurrentHitPoints(HPAfterA);
-    }
-    else{
-      this.getOwner().setCurrentHitPoints(HPAfterA);
-    }
-  }
-
-  protected void receiveWeakCounterAttack(IEquipableItem item){
-    double power = item.getPower();
-    double HPBeforeA = this.getOwner().getCurrentHitPoints();
-    double HPAfterA = HPBeforeA - (power - 20);
-    if(HPAfterA <= 0){
-      HPAfterA= 0;
-      this.getOwner().setCurrentHitPoints(HPAfterA);
-    }
-    else{
-      this.getOwner().setCurrentHitPoints(HPAfterA);
-    }
-  }
-  //endregion
-
-  //region Section receive counterattacks by item
-
-  @Override
-  public void receiveBowCounterAttack(IEquipableItem other) {
-    receiveNeutralCounterAttack(other);
-  }
-
-  @Override
-  public void receiveSpearCounterAttack(IEquipableItem other) {
-    receiveNeutralCounterAttack(other);
-  }
-
-  @Override
-  public void receiveAxeCounterAttack(IEquipableItem other) {
-    receiveNeutralCounterAttack(other);
-  }
-
-  @Override
-  public void receiveSwordCounterAttack(IEquipableItem other) {
-    receiveNeutralCounterAttack(other);
-  }
-
-  @Override
-  public void receiveMBACounterAttack(IEquipableItem other) {
-    receiveNeutralCounterAttack(other);
-  }
-
-  @Override
-  public void receiveMBLCounterAttack(IEquipableItem other) {
-    receiveNeutralCounterAttack(other);
-  }
-
-  @Override
-  public void receiveMBOCounterAttack(IEquipableItem other) {
-    receiveNeutralCounterAttack(other);
-  }
-
-  @Override
-  public void receiveStaffCounterAttack(IEquipableItem item){};
-
-  //endregion
-
 }

@@ -35,11 +35,6 @@ public class MagicBookOscuridad extends AbstractItem {
     other.receiveMBOAttack(this);
   }
 
-  @Override
-  public void counterAttack(IEquipableItem other) {
-    other.receiveMBOCounterAttack(this);
-  }
-
   //region Section receive TYPE attack
 
   @Override
@@ -68,34 +63,4 @@ public class MagicBookOscuridad extends AbstractItem {
   }
 
   //endregion
-
-  //region Section receive TYPE counterattack
-
-  @Override
-  public void receiveSpearCounterAttack(IEquipableItem other) {
-    receiveStrongCounterAttack(other);
-  }
-
-  @Override
-  public void receiveSwordCounterAttack(IEquipableItem other) {
-    receiveStrongCounterAttack(other);
-  }
-
-  @Override
-  public void receiveAxeCounterAttack(IEquipableItem other) {
-    receiveStrongCounterAttack(other);
-  }
-
-  @Override
-  public void receiveMBLCounterAttack(IEquipableItem other) {
-    receiveStrongCounterAttack(other);
-  }
-
-  @Override
-  public void receiveMBACounterAttack(IEquipableItem other) {
-    receiveWeakCounterAttack(other);
-  }
-
-  //endregion
-
 }

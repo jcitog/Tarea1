@@ -98,9 +98,18 @@ public abstract class AbstractUnit implements IUnit {
   }
 
   public void setOpponent(IUnit other) {
-    if(this.getLocation().distanceTo(other.getLocation()) >= this.getEquippedItem().getMinRange() &&
-            this.getLocation().distanceTo(other.getLocation()) <= this.getEquippedItem().getMaxRange()) {
+    double distance = this.getLocation().distanceTo(other.getLocation());
+    if(distance >= this.getEquippedItem().getMinRange() &&
+            distance <= this.getEquippedItem().getMaxRange() &&
+              other.getCurrentHitPoints() > 0 &&
+                this.getEquippedItem()!=null) {
       this.getEquippedItem().attack(other.getEquippedItem());
+      if(distance >= other.getEquippedItem().getMinRange() &&
+              distance <= other.getEquippedItem().getMaxRange() &&
+                other.getCurrentHitPoints() > 0 &&
+                  other.getEquippedItem()!=null){
+        other.getEquippedItem().attack(this.getEquippedItem());
+      }
       }
   }
 
