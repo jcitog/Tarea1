@@ -101,12 +101,7 @@ public abstract class AbstractUnit implements IUnit {
     if(this.getLocation().distanceTo(other.getLocation()) >= this.getEquippedItem().getMinRange() &&
             this.getLocation().distanceTo(other.getLocation()) <= this.getEquippedItem().getMaxRange()) {
       this.getEquippedItem().attack(other.getEquippedItem());
-      if(other.getCurrentHitPoints() >= 0 && other.getEquippedItem()!=null &&
-              other.getLocation().distanceTo(this.getLocation()) >= other.getEquippedItem().getMinRange() &&
-                other.getLocation().distanceTo(this.getLocation()) <= other.getEquippedItem().getMaxRange()){
-        other.getEquippedItem().attack(this.getEquippedItem());
       }
-    }
   }
 
   @Override

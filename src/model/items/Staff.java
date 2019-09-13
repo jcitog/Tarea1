@@ -32,7 +32,7 @@ public class Staff extends AbstractItem {
 
   @Override
   public void attack(IEquipableItem other) {
-    other.receiveClericAttack(this);
+    other.receiveClericAbility(this);
   }
 
   @Override

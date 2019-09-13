@@ -125,7 +125,7 @@ public interface IEquipableItem {
    * @param item
    *     the item item that will be healed with the staff
    */
-  void receiveClericAttack(IEquipableItem item);
+  void receiveClericAbility(IEquipableItem item);
 
   /**
    * Counterattack the owner of this item.

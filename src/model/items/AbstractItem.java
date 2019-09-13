@@ -150,13 +150,7 @@ public abstract class AbstractItem implements IEquipableItem {
     }
   }
 
-  /**
-   * Receives a heal from a staff.
-   *
-   * @param item
-   *     the owner of the item receives a heal.
-   */
-  public void receiveClericAttack(IEquipableItem item){
+  public void receiveClericAbility(IEquipableItem item){
     double power = item.getPower();
     double HPBeforeA = this.getOwner().getCurrentHitPoints();
     double HPAfterA = HPBeforeA + power;
