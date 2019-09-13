@@ -4,6 +4,14 @@ import model.map.Location;
 import model.units.IUnit;
 import model.units.Sorcerer;
 
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertNull;
+import static org.junit.jupiter.api.Assertions.assertTrue;
+
+import model.units.IUnit;
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
+
 /**
  * Test set for anima magic books
  *
