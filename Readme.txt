@@ -3,6 +3,7 @@
 -ese método dependiendo de la debilidad, fortaleza o neutralidad llama a receiveNeutralAttack, receiveStrongAttack y receiveWeakAttack.
 -en esos métodos está cómo se resta la vida según las condiciones.
 - luego de esta llamada setoppenent realiza las mismas llamadas para un contraataque en caso de que la vida del atacado sea mayor que cero.
+- adicionalmente en Staff está programada la función heal, que le permite curra al clérigo cuando tiene equipado un bastón
 
 -swap intercambia objetos
 

@@ -24,13 +24,15 @@ public class MagicBookOscuridadTest extends AbstractTestItem {
   private Fighter fighter;
   private Archer archer;
   private Bow bow;
-  private MagicBookAnima anima;
-  private MagicBookOscuridad oscuridad;
+  private MagicBookAnima magicBookAnima;
+  private MagicBookLuz magicBookLuz;
   private Staff staff;
   private Cleric cleric;
   private SwordMaster swordMaster;
   private Sword sword;
   private Alpaca alpaca;
+  private Sorcerer sorcerer2;
+  private Sorcerer sorcerer3;
 
 
   /**
@@ -47,7 +49,20 @@ public class MagicBookOscuridadTest extends AbstractTestItem {
     hero = new Hero(120,4,new Location(1,0));
     sword = new Sword("espada",20,1,2);
     swordMaster = new SwordMaster(100,4,new Location(2,0));
-
+    fighter = new Fighter(120,4,new Location(1,0));
+    axe = new Axe("hacha de leñador",20,1,2);
+    archer = new Archer(120,4,new Location(1,0));
+    cleric = new Cleric(120,4,new Location(1,0));
+    alpaca = new Alpaca (120,4,new Location(1,0));
+    magicBookLuz = new MagicBookLuz("librin",70,1,2);
+    swordMaster = new SwordMaster(10,4,new Location(1,0));
+    sword = new Sword("exodia",20,1,2);
+    bow = new Bow("ocra",2000,2,4);
+    archer = new Archer(120,4,new Location(1,0));
+    sorcerer = new Sorcerer(150, 4,new Location(1,0));
+    sorcerer2 = new Sorcerer(150, 4,new Location(1,0));
+    sorcerer3= new Sorcerer(10, 4,new Location(1,0));
+    magicBookAnima = new MagicBookAnima("PENITA",70,1,2);
   }
 
   /**
@@ -63,7 +78,7 @@ public class MagicBookOscuridadTest extends AbstractTestItem {
    */
   @Override
   public void setTestUnit() {
-    sorcerer = new Sorcerer(10, 5, new Location(0, 0));
+    sorcerer = new Sorcerer(5000, 5, new Location(0, 0));
   }
 
   @Override
@@ -88,20 +103,33 @@ public class MagicBookOscuridadTest extends AbstractTestItem {
   }
 
   @Test
-  public void MBLTest() {
+  public void MBOTest() {
     assertNull(sorcerer.getEquippedItem());
     magicBookOscuridad.equipToSorcerer(sorcerer);
-    magicBookOscuridad.receiveSpearAttack(spear);
     spear.equipToHero(hero);
-    assertEquals(sorcerer.getCurrentHitPoints(),0);
-    magicBookOscuridad.receiveSwordAttack(spear);
-    magicBookOscuridad.attack(spear);
-    spear.equipTo(hero);
-    magicBookOscuridad.attack(spear);
-    assertEquals(hero.getCurrentHitPoints(),90);
-    magicBookOscuridad.equipToHero(hero);
-    assertEquals(spear, hero.getEquippedItem());
+    assertEquals(spear,hero.getEquippedItem());
+    axe.equipToFighter(fighter);
+    assertEquals(axe,fighter.getEquippedItem());
+    sword.equipToSwordMaster(swordMaster);
+    assertEquals(sword,swordMaster.getEquippedItem());
+    bow.equipToArcher(archer);
+    assertEquals(bow,archer.getEquippedItem());
+    magicBookLuz.equipToSorcerer(sorcerer2);
+    magicBookOscuridad.receiveSpearAttack(spear);
+    assertEquals(sorcerer.getCurrentHitPoints(),4970);
+    magicBookOscuridad.receiveAxeAttack(axe);
+    assertEquals(sorcerer.getCurrentHitPoints(),4940);
+    magicBookOscuridad.receiveSwordAttack(sword);
+    assertEquals(sorcerer.getCurrentHitPoints(),4910);
+    magicBookOscuridad.receiveMBLAttack(magicBookLuz);
+    assertEquals(sorcerer.getCurrentHitPoints(),4805);
+    magicBookAnima.equipToSorcerer(sorcerer3);
+    magicBookOscuridad.receiveMBAAttack(magicBookAnima);
+    assertEquals(sorcerer.getCurrentHitPoints(),4755);
 
-    assertEquals(magicBookOscuridad, sorcerer.getEquippedItem());
+    magicBookOscuridad.attack(magicBookLuz);
+
+    magicBookOscuridad.receiveBowAttack(bow);
+    assertEquals(sorcerer.getCurrentHitPoints(),2755);
   }
 }
