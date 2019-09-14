@@ -3,8 +3,7 @@ package model.units;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertNull;
 
-import model.items.IEquipableItem;
-import model.items.MagicBookOscuridad;
+import model.items.*;
 import org.junit.jupiter.api.Test;
 
 /**
@@ -40,5 +39,6 @@ public class SorcererTest extends AbstractTestUnit {
     assertNull(sorcerer.getEquippedItem());
     sorcerer.equipItem(magicBookOscuridad);
     assertEquals(magicBookOscuridad, sorcerer.getEquippedItem());
+    assertEquals(sorcerer.getMaxItems(),3);
   }
 }

@@ -4,6 +4,7 @@ import static org.junit.jupiter.api.Assertions.assertTrue;
 
 import model.map.Location;
 import model.units.Archer;
+import model.units.Hero;
 import model.units.IUnit;
 import org.junit.jupiter.api.Test;
 
@@ -19,6 +20,7 @@ public class BowTest extends AbstractTestItem {
   private Bow wrongBow;
   private Archer archer;
   private Spear spear;
+  private Hero hero;
 
   /**
    * Sets which item is going to be tested
@@ -31,6 +33,8 @@ public class BowTest extends AbstractTestItem {
     expectedMaxRange = 4;
     bow = new Bow(expectedName, expectedPower, expectedMinRange, expectedMaxRange);
     spear = new Spear("lanzilla", 30, 1, 2);
+    hero = new Hero(120,4,new Location(1,0));
+
   }
 
   /**
@@ -82,6 +86,7 @@ public class BowTest extends AbstractTestItem {
 
   @Test
   public void attackBowTest(){
+    spear.equipTo(hero);
     bow.attack(spear);
 
   }

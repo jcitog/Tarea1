@@ -61,5 +61,4 @@ public class Sword extends AbstractItem {
   }
 
   //endregion
-
 }
