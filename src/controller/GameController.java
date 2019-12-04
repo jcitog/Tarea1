@@ -1,7 +1,10 @@
 package controller;
 
+import java.util.ArrayList;
 import java.util.List;
-import model.Tactician;
+import java.util.Observer;
+
+import model.tacticians.Tactician;
 import model.items.IEquipableItem;
 import model.map.Field;
 import model.units.IUnit;
@@ -14,9 +17,18 @@ import model.units.IUnit;
  * @version 2.0
  * @since 2.0
  */
-public class GameController {
+public class GameController implements Observer {
+    private int numberOfPlayers;
+    private int mapSize;
+    private Field field;
+    private ArrayList<Tactician> tacticians = new ArrayList<>();
+    private Tactician selectedTactician;
+    private int round=0;
+    private int maxRound;
+    private Tactician tacticianPlaying;
+    }
 
-  /**
+    /**
    * Creates the controller for a new game.
    *
    * @param numberOfPlayers
@@ -25,42 +37,47 @@ public class GameController {
    *     the dimensions of the map, for simplicity, all maps are squares
    */
   public GameController(int numberOfPlayers, int mapSize) {
-
+      for(int i=1;i<=numberOfPlayers+1; i++) {
+          Tactician tactician = new Tactician();
+          String name = "Player" + i;
+          tactician.setName(name);
+          tacticians.add(tactician);
+      }
   }
 
   /**
    * @return the list of all the tacticians participating in the game.
    */
   public List<Tactician> getTacticians() {
-    return null;
+    return List.copyOf(tacticians);
   }
 
   /**
    * @return the map of the current game
    */
   public Field getGameMap() {
-    return null;
+    return this.field;
   }
 
   /**
    * @return the tactician that's currently playing
    */
   public Tactician getTurnOwner() {
-    return null;
+      return tacticians.get(selectedTactician);
   }
 
   /**
    * @return the number of rounds since the start of the game.
    */
   public int getRoundNumber() {
-    return 0;
+    return this.round;
   }
 
   /**
    * @return the maximum number of rounds a match can last
    */
   public int getMaxRounds() {
-    return 0;
+    return this.maxRound;
   }
 
   /**
@@ -100,14 +117,16 @@ public class GameController {
    * @return the winner of this game, if the match ends in a draw returns a list of all the winners
    */
   public List<String> getWinners() {
-    return null;
+
+
+      return null;
   }
 
   /**
    * @return the current player's selected unit
    */
   public IUnit getSelectedUnit() {
-    return null;
+    return this.selectedTactician.selectedUnit;
   }
 
   /**

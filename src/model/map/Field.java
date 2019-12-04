@@ -21,10 +21,8 @@ public class Field {
   /**
    * Add cells to the map.
    *
-   * @param connectAll
-   *     a flag that indicates if all the cells should be connected to it's neighbours
-   * @param cells
-   *     the locations that are going to be added to the map
+   * @param connectAll a flag that indicates if all the cells should be connected to it's neighbours
+   * @param cells      the locations that are going to be added to the map
    */
   public void addCells(final boolean connectAll, final Location... cells) {
     for (Location cell : cells) {
@@ -41,8 +39,7 @@ public class Field {
   /**
    * Adds a cell to the map
    *
-   * @param cell
-   *     the location to be added
+   * @param cell the location to be added
    */
   private void addCell(final Location cell) {
     map.put(cell.toString(), cell);
@@ -51,15 +48,14 @@ public class Field {
   /**
    * Gets the possible adjacent cells to a given cell
    *
-   * @param cell
-   *     the location of the current cell
+   * @param cell the location of the current cell
    * @return an array of the adjacent cells
    */
   private Location[] getAdjacentCells(final Location cell) {
     int row = cell.getRow(),
-        col = cell.getColumn();
+            col = cell.getColumn();
     return new Location[]{getCell(row - 1, col), getCell(row + 1, col), getCell(row, col - 1),
-        getCell(row, col + 1)};
+            getCell(row, col + 1)};
   }
 
   /**
@@ -70,10 +66,8 @@ public class Field {
   }
 
   /**
-   * @param row
-   *     the row of the cell
-   * @param col
-   *     the column of the cell
+   * @param row the row of the cell
+   * @param col the column of the cell
    * @return the Location that represents the cell at (row, col)
    */
   public Location getCell(final int row, final int col) {
@@ -84,10 +78,8 @@ public class Field {
   /**
    * Creates a map key from a row and a column
    *
-   * @param row
-   *     the row of the cell
-   * @param col
-   *     the column of the cell
+   * @param row the row of the cell
+   * @param col the column of the cell
    * @return a string of the form (row, col)
    */
   private String generateID(final int row, final int col) {
@@ -115,7 +107,7 @@ public class Field {
       }
       Location currentNode = toVisit.poll();
       for (Location neighbour :
-          currentNode.getNeighbours()) {
+              currentNode.getNeighbours()) {
         if (!visitedNodes.contains(neighbour)) {
           visitedNodes.add(neighbour);
           toVisit.add(neighbour);
@@ -140,4 +132,9 @@ public class Field {
   public boolean checkConnection(final Location cell1, final Location cell2) {
     return cell1.isNeighbour(cell2);
   }
+
+  /**
+   * Returns the size of the map
+   */
+  public int getSize() { return map.size();}
 }
