@@ -135,4 +135,12 @@ public interface IUnit {
    *     swordMaster to be equipped
    */
   void equipToSwordMaster(SwordMaster swordMaster);
+
+  /**
+   * @param item
+   *     item to be swap
+   * @param other
+   *      other unit that will receive the item by the swap
+   */
+  void swap(IEquipableItem item, IUnit other);
 }

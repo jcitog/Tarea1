@@ -33,6 +33,9 @@ public class Sword extends AbstractItem {
   @Override
   public void attack(IEquipableItem other){other.receiveSwordAttack(this);}
 
+  @Override
+  public void heal(IEquipableItem item){}
+
   //region Section receive TYPE attack
 
   @Override

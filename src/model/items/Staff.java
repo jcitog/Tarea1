@@ -30,12 +30,6 @@ public class Staff extends AbstractItem {
 
   public void equipToCleric(Cleric cleric){this.equipTo(cleric);}
 
-  /**
-   * Heal the owner of this item.
-   *
-   * @param item
-   *      the item that will be healed
-   */
   public void heal(IEquipableItem item) {
     double power = this.getPower();
     double HPBeforeH = item.getOwner().getCurrentHitPoints();
@@ -50,6 +44,5 @@ public class Staff extends AbstractItem {
 
   @Override
   public void attack(IEquipableItem item){}
-
 
 }

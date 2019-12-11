@@ -42,6 +42,9 @@ public class MagicBookAnima extends AbstractItem {
     other.receiveMBAAttack(this);
   }
 
+  @Override
+  public void heal(IEquipableItem item){}
+
 
   //region Section receive TYPE attack
 

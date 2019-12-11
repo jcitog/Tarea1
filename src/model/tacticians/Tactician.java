@@ -13,11 +13,11 @@ import java.util.List;
  */
 public class Tactician {
 
+  public IUnit selectedUnit;
   private String name;
-  private final List<IUnit> iUnits;
-  private final boolean isAlive;
-  private final boolean onTurn;
-  private final IUnit selectedUnit;
+  private List<IUnit> iUnits;
+  private boolean isAlive = true;
+  private boolean onTurn;
 
   /**
    * Creates a new Tactician.
@@ -36,17 +36,21 @@ public class Tactician {
    * @param selectedUnit
    *  the unit that the tactician has selected
    */
-public Tactician(String name, List<IUnit> iUnits, boolean isAlive, boolean onTurn, IUnit selectedUnit){
-  this.name = name;
-  this.iUnits = iUnits;
-  this.isAlive = isAlive;
-  this.onTurn = onTurn;
-  this.selectedUnit = selectedUnit;
-}
+  public Tactician(String name, List<IUnit> iUnits, boolean isAlive, boolean onTurn, IUnit selectedUnit){
+    this.name = name;
+    this.iUnits = iUnits;
+    this.isAlive = isAlive;
+    this.onTurn = onTurn;
+    this.selectedUnit = selectedUnit;
+  }
 
-public void setName(String nickname){
-  this.name = nickname;
-}
+  public void setName(String nickname){
+    this.name = nickname;
+  }
 
+  public String getName() { return name;}
 
+  public IUnit getSelectedUnit() {
+    return selectedUnit;
+  }
 }

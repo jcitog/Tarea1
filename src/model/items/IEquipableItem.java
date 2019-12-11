@@ -61,6 +61,14 @@ public interface IEquipableItem {
    */
   void attack(IEquipableItem item);
 
+  /**
+   * Heal the owner of this item.
+   *
+   * @param item
+   *      the item that will be healed
+   */
+  void heal(IEquipableItem item);
+
   //region Section receive attack
   /**
    * Attack the owner of this item with the spear.

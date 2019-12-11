@@ -35,6 +35,9 @@ public class MagicBookLuz extends AbstractItem {
     other.receiveMBLAttack(this);
   }
 
+  @Override
+  public void heal(IEquipableItem item){}
+
 
   //region Section receive TYPE attack
 

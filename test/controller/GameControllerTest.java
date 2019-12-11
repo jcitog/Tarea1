@@ -8,7 +8,7 @@ import static org.junit.jupiter.api.Assertions.assertTrue;
 import java.util.List;
 import java.util.Random;
 import java.util.stream.IntStream;
-import model.Tactician.Tactician;
+import model.tacticians.Tactician;
 import model.map.Field;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
@@ -34,7 +34,7 @@ class GameControllerTest {
 
   @Test
   void getTacticians() {
-    List<Tactician> tacticians = controller.getTacticians();
+    List<Tactician> tacticians = controller.getTacticiansList();
     assertEquals(4, tacticians.size());
     for (int i = 0; i < tacticians.size(); i++) {
       assertEquals("Player " + i, tacticians.get(i + 1).getName());
@@ -99,19 +99,19 @@ class GameControllerTest {
 
   @Test
   void removeTactician() {
-    assertEquals(4, controller.getTacticians().size());
-    controller.getTacticians()
+    assertEquals(4, controller.getTacticiansList().size());
+    controller.getTacticiansList()
         .forEach(tactician -> Assertions.assertTrue(testTacticians.contains(tactician.getName())));
 
     controller.removeTactician("Player 0");
-    assertEquals(3, controller.getTacticians().size());
-    controller.getTacticians().forEach(tactician -> assertNotEquals("Player 1", tactician));
-    controller.getTacticians()
+    assertEquals(3, controller.getTacticiansList().size());
+    controller.getTacticiansList().forEach(tactician -> assertNotEquals("Player 1", tactician));
+    controller.getTacticiansList()
         .forEach(tactician -> Assertions.assertTrue(testTacticians.contains(tactician.getName())));
 
     controller.removeTactician("Player 5");
-    assertEquals(3, controller.getTacticians().size());
-    controller.getTacticians()
+    assertEquals(3, controller.getTacticiansList().size());
+    controller.getTacticiansList()
         .forEach(tactician -> Assertions.assertTrue(testTacticians.contains(tactician.getName())));
   }
 

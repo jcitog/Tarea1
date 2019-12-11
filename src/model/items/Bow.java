@@ -36,4 +36,7 @@ public class Bow extends AbstractItem {
     other.receiveBowAttack(this);
   }
 
+  @Override
+  public void heal(IEquipableItem item){}
+
 }
