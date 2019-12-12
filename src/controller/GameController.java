@@ -1,8 +1,8 @@
 package controller;
 
+import java.net.http.WebSocket;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Observer;
 
 import model.tacticians.Tactician;
 import model.items.IEquipableItem;
@@ -17,7 +17,7 @@ import model.units.IUnit;
  * @version 2.0
  * @since 2.0
  */
-public class GameController implements Observer {
+public class GameController implements Listener {
     private int numberOfPlayers;
     private int mapSize;
     private Field field;
@@ -204,7 +204,6 @@ public class GameController implements Observer {
    *     vertical position of the target
    */
   public void giveItemTo(int x, int y) {
-      this.getSelectedUnit().swap(this.selectedItem,this.field.getCell(x,y).getUnit());
-
+      this.getSelectedUnit().swap(this.selectedItem(),this.field.getCell(x,y).getUnit());
   }
 }
