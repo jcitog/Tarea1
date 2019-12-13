@@ -1,5 +1,6 @@
 package controller;
 
+import java.beans.PropertyChangeListener;
 import java.net.http.WebSocket;
 import java.util.ArrayList;
 import java.util.List;
@@ -17,7 +18,7 @@ import model.units.IUnit;
  * @version 2.0
  * @since 2.0
  */
-public class GameController implements Listener {
+public class GameController implements PropertyChangeListener {
     private int numberOfPlayers;
     private int mapSize;
     private Field field;
@@ -206,4 +207,6 @@ public class GameController implements Listener {
   public void giveItemTo(int x, int y) {
       this.getSelectedUnit().swap(this.selectedItem(),this.field.getCell(x,y).getUnit());
   }
+
+
 }

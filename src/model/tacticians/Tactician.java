@@ -1,7 +1,8 @@
 package model.tacticians;
 
+import model.factories.IFactory;
 import model.units.IUnit;
-
+import model.map.Field;
 import java.util.List;
 
 /**
@@ -22,8 +23,6 @@ public class Tactician {
   /**
    * Creates a new Tactician.
    * <p>
-   * Tacticians are
-   * one.
    *
    * @param name
    *  the name of the tactician
@@ -44,13 +43,59 @@ public class Tactician {
     this.selectedUnit = selectedUnit;
   }
 
+
+
+  /**
+   * Sets the name of the Tactician.
+   * <p>
+   *
+   * @param nickname
+   *      the name that will be assigned to the Tactician
+   *
+   */
   public void setName(String nickname){
     this.name = nickname;
   }
 
+  /**
+   * Gets the name of the Tactician.
+   * <p>
+   *
+   * @return the name of the Tactician
+   */
   public String getName() { return name;}
 
+  /**
+   * Gets the unit that the Tactician has selected.
+   * <p>
+   *
+   * @return the selected unit by the Tactician
+   */
   public IUnit getSelectedUnit() {
     return selectedUnit;
+  }
+
+
+  /**
+   * Adds a unit to the Tactician´s army
+   * <p>
+   *
+   *  @param hitPoints
+   *      the amount of damage this unit can receive
+   *  @param movement
+   *      number of cells the unit can move
+   *  @param x
+   *      x is the abscissa of the unit position
+   *  @param y
+   *      y is the ordinate of the unit position
+   *
+   */
+  public void addUnit (int hitPoints, int movement, int x, int y){
+    IUnit iUnit = IFactory.create(hitPoints,movement,this.getMap(),x,y);
+    this.iUnits.add(iUnit);
+  }
+
+  public void setMap(Object map) {
+    this.map = map;
   }
 }

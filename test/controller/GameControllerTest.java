@@ -23,6 +23,7 @@ class GameControllerTest {
   private GameController controller;
   private long randomSeed;
   private List<String> testTacticians;
+  private Tactician tactician; // yooo
 
   @BeforeEach
   void setUp() {
@@ -44,7 +45,7 @@ class GameControllerTest {
   @Test
   void getGameMap() {
     Field gameMap = controller.getGameMap();
-    assertEquals(128, gameMap.getSize()); // getSize deben definirlo
+    assertEquals(128, gameMap.getSize()); // getSize deben definirlo / hecho
     assertTrue(controller.getGameMap().isConnected());
     Random testRandom = new Random(randomSeed);
     // Para testear funcionalidades que dependen de valores aleatorios se hacen 2 cosas:
@@ -144,6 +145,7 @@ class GameControllerTest {
   // Desde aquí en adelante, los tests deben definirlos completamente ustedes
   @Test
   void getSelectedUnit() {
+    testTacticians
   }
 
   @Test
@@ -156,6 +158,7 @@ class GameControllerTest {
 
   @Test
   void equipItem() {
+
   }
 
   @Test

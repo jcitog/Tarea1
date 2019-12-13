@@ -22,7 +22,6 @@ public class SpearTest extends AbstractTestItem {
   private MagicBookAnima wrongmagicBookAnima;
   private Sorcerer sorcerer;
   private Spear spear;
-  private Hero hero;
   private Axe axe;
   private Fighter fighter;
   private Archer archer;
