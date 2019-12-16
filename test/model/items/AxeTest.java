@@ -115,6 +115,7 @@ class AxeTest extends AbstractTestItem {
     assertEquals(fighter1.getCurrentHitPoints(),825);
 
     axe.attack(magicBookLuz);
+    axe.heal(magicBookLuz);
 
     magicBookAnima.equipToSorcerer(sorcerer);
     axe.receiveMBAAttack(magicBookAnima);

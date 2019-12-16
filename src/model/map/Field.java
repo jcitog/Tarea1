@@ -1,5 +1,10 @@
 package model.map;
 
+import controller.GameController;
+import model.tacticians.Tactician;
+
+import java.beans.PropertyChangeListener;
+import java.beans.PropertyChangeSupport;
 import java.util.*;
 
 /**
@@ -17,6 +22,7 @@ public class Field {
   private Map<String, Location> map = new HashMap<>();
   private Random random = new Random();
   private StringBuilder builder = new StringBuilder();
+
 
   /**
    * Add cells to the map.
@@ -136,5 +142,7 @@ public class Field {
   /**
    * Returns the size of the map
    */
-  public int getSize() { return map.size();}
+  public int getSize() {
+    return (int) Math.sqrt(map.size());
+  }
 }

@@ -34,7 +34,7 @@ public class Staff extends AbstractItem {
     double power = this.getPower();
     double HPBeforeH = item.getOwner().getCurrentHitPoints();
     double HPAfterH = HPBeforeH + power;
-    if(HPAfterH >= item.getOwner().getHitPoints()){
+    if(HPAfterH > item.getOwner().getHitPoints()){
       item.getOwner().setCurrentHitPoints(item.getOwner().getHitPoints());
     }
     else{

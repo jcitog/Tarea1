@@ -88,6 +88,6 @@ public class BowTest extends AbstractTestItem {
   public void attackBowTest(){
     spear.equipTo(hero);
     bow.attack(spear);
-
+    bow.heal(spear);
   }
 }

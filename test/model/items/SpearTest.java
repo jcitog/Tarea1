@@ -108,30 +108,30 @@ public class SpearTest extends AbstractTestItem {
     spear.equipToHero(hero);
     assertEquals(spear,hero.getEquippedItem());
     axe.equipToFighter(fighter);
-    assertEquals(fighter.getCurrentHitPoints(),1000);
-    assertEquals(spear,fighter.getEquippedItem());
+    assertEquals(fighter.getCurrentHitPoints(),120);
+    assertEquals(axe,fighter.getEquippedItem());
     sword.equipToSwordMaster(swordMaster);
     assertEquals(sword,swordMaster.getEquippedItem());
     bow.equipToArcher(archer);
     assertEquals(bow,archer.getEquippedItem());
     spear.receiveSpearAttack(spear);
-    assertEquals(hero.getCurrentHitPoints(),1000);
+    assertEquals(hero.getCurrentHitPoints(),0);
     spear.receiveAxeAttack(axe);
-    assertEquals(hero.getCurrentHitPoints(),990);
+    assertEquals(hero.getCurrentHitPoints(),0);
     spear.receiveSwordAttack(sword);
-    assertEquals(hero.getCurrentHitPoints(),960);
+    assertEquals(hero.getCurrentHitPoints(),0);
     spear.receiveMBOAttack(magicBookOscuridad);
-    assertEquals(hero.getCurrentHitPoints(),930);
+    assertEquals(hero.getCurrentHitPoints(),0);
     magicBookLuz.equipToSorcerer(sorcerer);
     magicBookOscuridad.equipToSorcerer(sorcerer);
     spear.receiveMBLAttack(magicBookLuz);
-    assertEquals(hero.getCurrentHitPoints(),825);
+    assertEquals(hero.getCurrentHitPoints(),0);
 
     spear.attack(magicBookLuz);
 
     magicBookAnima.equipToSorcerer(sorcerer);
     spear.receiveMBAAttack(magicBookAnima);
-    assertEquals(hero.getCurrentHitPoints(),810);
+    assertEquals(hero.getCurrentHitPoints(),0);
     spear.equipToArcher(archer);
   }
 }

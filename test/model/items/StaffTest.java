@@ -2,7 +2,11 @@ package model.items;
 
 import model.map.Location;
 import model.units.Cleric;
+import model.units.Fighter;
 import model.units.IUnit;
+import org.junit.jupiter.api.Test;
+
+import static org.junit.jupiter.api.Assertions.assertEquals;
 
 /**
  * Test set for staffs
@@ -16,6 +20,7 @@ public class StaffTest extends AbstractTestItem {
   private Staff wrongStaff;
   private Cleric cleric;
   private Axe axe;
+  private Fighter fighter;
 
   /**
    * Sets which item is going to be tested
@@ -27,6 +32,9 @@ public class StaffTest extends AbstractTestItem {
     expectedMinRange = 1;
     expectedMaxRange = 1;
     staff = new Staff(expectedName, expectedPower, expectedMinRange, expectedMaxRange);
+    axe = new Axe("sisi", 44, 1,1);
+    fighter = new Fighter(44,4,new Location(1,0));
+    cleric = new Cleric(44,4,new Location(2,0));
   }
 
   /**
@@ -64,5 +72,13 @@ public class StaffTest extends AbstractTestItem {
   @Override
   public IUnit getTestUnit() {
     return cleric;
+  }
+
+  @Test
+  public void StaffTest(){
+    staff.equipToCleric(cleric);
+    axe.equipToFighter(fighter);
+    staff.heal(axe);
+    assertEquals(fighter.getCurrentHitPoints(),44);
   }
 }
