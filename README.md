@@ -1,4 +1,4 @@
-﻿#Alpaca Emblem - Tarea 2
+﻿#Alpaca Emblem - Tarea 3
 
 En esta nueva versión:
 - Se implementó la clase Tactician en model.tactician.Tactician
