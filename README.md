@@ -1,5 +1,5 @@
 ﻿#Alpaca Emblem - Tarea 456
-
+kk
 
 En esta nueva versión:
 - Se implementó la clase Tactician en model.tactician.Tactician
